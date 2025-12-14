@@ -80,27 +80,35 @@ function renderCards() {
     selectedCards.forEach((card, index) => {
         const cardElement = document.createElement('div');
         cardElement.className = 'card';
+        
+        // Создаем внутреннюю структуру для переворота
         cardElement.innerHTML = `
             <div class="card-inner">
-                <div class="card-front">
-                    <img src="${card.image}" alt="${card.name}">
-                    <div class="name">${card.name}</div>
+                <!-- Обратная сторона карты -->
+                <div class="card-back-side">
+                    <div class="back-pattern"></div>
                 </div>
-                <div class="card-back">
+                <!-- Лицевая сторона карты -->
+                <div class="card-front-side">
+                    <img src="${card.image}" alt="${card.name}" onerror="this.src='https://via.placeholder.com/150?text=Карта'">
                     <div class="name">${card.name}</div>
                     <div class="meaning">${card.meaning}</div>
                 </div>
             </div>
         `;
+        
+        // Добавляем обработчик клика для переворота
         cardElement.addEventListener('click', () => flipCard(cardElement, index));
         cardsContainer.appendChild(cardElement);
     });
 }
 
+// Функция для переворота одной карты
 function flipCard(cardElement, index) {
     cardElement.classList.toggle('flipped');
 }
 
+// Функция для показа всех карт
 function revealAllCards() {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
