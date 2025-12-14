@@ -8,26 +8,48 @@
 </head>
 <body>
     <div class="container">
-        <h1>✨ Выберите расклад</h1>
+        <div class="header">
+            <h1>✨ Tarot Heart</h1>
+            <p class="subtitle">Где карты шепчут тайны Вселенной...</p>
+        </div>
+        
         <div id="spread-selector">
-            <button onclick="startSpread('daily')">Карта дня 💖</button>
-            <button onclick="startSpread('yes_no')">Да/Нет ✨</button>
-            <button onclick="startSpread('relations')">Отношения 💞</button>
-            <button onclick="startSpread('finance')">Финансы 💰</button>
-            <button onclick="startSpread('month')">Месяц 📅</button>
-            <button onclick="startSpread('three_months')">3 месяца 🌙</button>
-            <button onclick="startSpread('when')">Когда? ⏳</button>
+            <div class="section-title">🔮 Выберите расклад</div>
+            <button onclick="startSpread('daily')" class="spread-button">
+                <span class="icon">💖</span> Карта дня
+            </button>
+            <button onclick="startSpread('yes_no')" class="spread-button">
+                <span class="icon">✨</span> Да/Нет
+            </button>
+            <button onclick="startSpread('relations')" class="spread-button">
+                <span class="icon">💞</span> Отношения
+            </button>
+            <button onclick="startSpread('finance')" class="spread-button">
+                <span class="icon">💰</span> Финансы
+            </button>
+            <button onclick="startSpread('month')" class="spread-button">
+                <span class="icon">📅</span> Месяц
+            </button>
+            <button onclick="startSpread('three_months')" class="spread-button">
+                <span class="icon">🌙</span> 3 месяца
+            </button>
+            <button onclick="startSpread('when')" class="spread-button">
+                <span class="icon">⏳</span> Когда?
+            </button>
         </div>
 
         <div id="cards-container" class="hidden">
-            <h2 id="spread-title">Расклад: ...</h2>
+            <div class="spread-header">
+                <h2 id="spread-title">Расклад: ...</h2>
+                <div class="card-count" id="card-count">Карты: 0</div>
+            </div>
             <div id="cards"></div>
             <button id="reveal-all" onclick="revealAllCards()">Показать все карты</button>
         </div>
 
         <div id="loading" class="hidden">
             <div class="spinner"></div>
-            <p>🚀 Отправляю запрос во вселенную...</p>
+            <p>🌌 Запускаю магию Таро...</p>
         </div>
     </div>
 
