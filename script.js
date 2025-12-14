@@ -31,12 +31,16 @@ function startSpread(spreadType) {
     document.getElementById('spread-selector').classList.add('hidden');
     document.getElementById('loading').classList.remove('hidden');
 
-    // Имитация загрузки
+    // Имитация загрузки с анимацией
     setTimeout(() => {
         generateCards();
         document.getElementById('loading').classList.add('hidden');
         document.getElementById('cards-container').classList.remove('hidden');
         document.getElementById('spread-title').innerText = `Расклад: ${getSpreadName(spreadType)}`;
+        
+        // Обновляем счетчик карт
+        const cardCount = selectedCards.length;
+        document.getElementById('card-count').innerText = `Карты: ${cardCount}`;
     }, 1500);
 }
 
@@ -77,9 +81,16 @@ function renderCards() {
         const cardElement = document.createElement('div');
         cardElement.className = 'card';
         cardElement.innerHTML = `
-            <img src="${card.image}" alt="${card.name}">
-            <div class="name">${card.name}</div>
-            <div class="meaning">${card.meaning}</div>
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="${card.image}" alt="${card.name}">
+                    <div class="name">${card.name}</div>
+                </div>
+                <div class="card-back">
+                    <div class="name">${card.name}</div>
+                    <div class="meaning">${card.meaning}</div>
+                </div>
+            </div>
         `;
         cardElement.addEventListener('click', () => flipCard(cardElement, index));
         cardsContainer.appendChild(cardElement);
@@ -96,3 +107,30 @@ function revealAllCards() {
         card.classList.add('flipped');
     });
 }
+
+// Добавляем анимацию при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    // Анимация для заголовка
+    const header = document.querySelector('.header h1');
+    header.style.opacity = '0';
+    header.style.transform = 'translateY(-20px)';
+    header.style.transition = 'opacity 1s ease, transform 1s ease';
+    
+    setTimeout(() => {
+        header.style.opacity = '1';
+        header.style.transform = 'translateY(0)';
+    }, 500);
+    
+    // Анимация для кнопок
+    const buttons = document.querySelectorAll('.spread-button');
+    buttons.forEach((button, index) => {
+        button.style.opacity = '0';
+        button.style.transform = 'translateY(20px)';
+        button.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        
+        setTimeout(() => {
+            button.style.opacity = '1';
+            button.style.transform = 'translateY(0)';
+        }, 600 + index * 50);
+    });
+});
