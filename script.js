@@ -104,6 +104,17 @@ function renderCards() {
     });
 }
 
+// Функция для показа всех карт по очереди
+function revealAllCards() {
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('flipped');
+        }, index * 200); // Задержка 200мс между картами
+    });
+}
+
 // Функция для переворота одной карты
 function flipCard(cardElement, index) {
     cardElement.classList.toggle('flipped');
