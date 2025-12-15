@@ -152,6 +152,59 @@ body {
     margin-bottom: 20px;
 }
 
+/* Стиль для русского названия карты */
+.card .name-ru {
+    font-size: 0.7rem;
+    font-weight: normal;
+    margin-top: 5px;
+    opacity: 0.8;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Увеличиваем размер изображений карт */
+.card img {
+    max-width: 90%;
+    max-height: 160px; /* Увеличили с 150px */
+    height: auto;
+    width: auto;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Увеличиваем размер карточки */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    min-height: 200px; /* Увеличили с 180px */
+    width: 100%;
+    max-width: 220px; /* Увеличили с 200px */
+    overflow: hidden;
+}
+
+
 /* Стили для переворота карты */
 .card {
     background: rgba(255, 255, 255, 0.05);
