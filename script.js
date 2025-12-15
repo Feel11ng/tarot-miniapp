@@ -1,26 +1,26 @@
 const cardsData = [
-    { name: "The Fool", image: "images/the_fool.jpg", meaning: "Новый старт, беззаботность." },
-    { name: "The Magician", image: "images/the_magician.jpg", meaning: "Власть, способности." },
-    { name: "The High Priestess", image: "images/the_high_priestess.jpg", meaning: "Интуиция, тайны." },
-    { name: "The Empress", image: "images/the_empress.jpg", meaning: "Творчество, любовь." },
-    { name: "The Emperor", image: "images/the_emperor.jpg", meaning: "Контроль, структура." },
-    { name: "The Hierophant", image: "images/the_hierophant.jpg", meaning: "Традиции, учение." },
-    { name: "The Lovers", image: "images/the_lovers.jpg", meaning: "Выбор, любовь." },
-    { name: "The Chariot", image: "images/the_chariot.jpg", meaning: "Победа, движение." },
-    { name: "Strength", image: "images/strength.jpg", meaning: "Сила, терпение." },
-    { name: "The Hermit", image: "images/the_hermit.jpg", meaning: "Уединение, мудрость." },
-    { name: "Wheel of Fortune", image: "images/wheel_of_fortune.jpg", meaning: "Перемены, судьба." },
-    { name: "Justice", image: "images/justice.jpg", meaning: "Честность, баланс." },
-    { name: "The Hanged Man", image: "images/the_hanged_man.jpg", meaning: "Жертва, переоценка." },
-    { name: "Death", image: "images/death.jpg", meaning: "Конец, трансформация." },
-    { name: "Temperance", image: "images/temperance.jpg", meaning: "Баланс, гармония." },
-    { name: "The Devil", image: "images/the_devil.jpg", meaning: "Зависимость, страх." },
-    { name: "The Tower", image: "images/the_tower.jpg", meaning: "Разрушение, пробуждение." },
-    { name: "The Star", image: "images/the_star.jpg", meaning: "Надежда, исцеление." },
-    { name: "The Moon", image: "images/the_moon.jpg", meaning: "Иллюзии, подсознание." },
-    { name: "The Sun", image: "images/the_sun.jpg", meaning: "Радость, успех." },
-    { name: "Judgement", image: "images/judgement.jpg", meaning: "Пробуждение, возрождение." },
-    { name: "The World", image: "images/the_world.jpg", meaning: "Завершение, целостность." }
+    { name: "The Fool", name_ru: "Шут", image: "images/the_fool.jpg", meaning: "Новый старт, беззаботность." },
+    { name: "The Magician", name_ru: "Маг", image: "images/the_magician.jpg", meaning: "Власть, способности." },
+    { name: "The High Priestess", name_ru: "Жрица", image: "images/the_high_priestess.jpg", meaning: "Интуиция, тайны." },
+    { name: "The Empress", name_ru: "Императрица", image: "images/the_empress.jpg", meaning: "Творчество, любовь." },
+    { name: "The Emperor", name_ru: "Император", image: "images/the_emperor.jpg", meaning: "Контроль, структура." },
+    { name: "The Hierophant", name_ru: "Иерофант", image: "images/the_hierophant.jpg", meaning: "Традиции, учение." },
+    { name: "The Lovers", name_ru: "Влюблённые", image: "images/the_lovers.jpg", meaning: "Выбор, любовь." },
+    { name: "The Chariot", name_ru: "Колесница", image: "images/the_chariot.jpg", meaning: "Победа, движение." },
+    { name: "Strength", name_ru: "Сила", image: "images/strength.jpg", meaning: "Сила, терпение." },
+    { name: "The Hermit", name_ru: "Отшельник", image: "images/the_hermit.jpg", meaning: "Уединение, мудрость." },
+    { name: "Wheel of Fortune", name_ru: "Колесо Фортуны", image: "images/wheel_of_fortune.jpg", meaning: "Перемены, судьба." },
+    { name: "Justice", name_ru: "Справедливость", image: "images/justice.jpg", meaning: "Честность, баланс." },
+    { name: "The Hanged Man", name_ru: "Повешенный", image: "images/the_hanged_man.jpg", meaning: "Жертва, переоценка." },
+    { name: "Death", name_ru: "Смерть", image: "images/death.jpg", meaning: "Конец, трансформация." },
+    { name: "Temperance", name_ru: "Умеренность", image: "images/temperance.jpg", meaning: "Баланс, гармония." },
+    { name: "The Devil", name_ru: "Дьявол", image: "images/the_devil.jpg", meaning: "Зависимость, страх." },
+    { name: "The Tower", name_ru: "Башня", image: "images/the_tower.jpg", meaning: "Разрушение, пробуждение." },
+    { name: "The Star", name_ru: "Звезда", image: "images/the_star.jpg", meaning: "Надежда, исцеление." },
+    { name: "The Moon", name_ru: "Луна", image: "images/the_moon.jpg", meaning: "Иллюзии, подсознание." },
+    { name: "The Sun", name_ru: "Солнце", image: "images/the_sun.jpg", meaning: "Радость, успех." },
+    { name: "Judgement", name_ru: "Суд", image: "images/judgement.jpg", meaning: "Пробуждение, возрождение." },
+    { name: "The World", name_ru: "Мир", image: "images/the_world.jpg", meaning: "Завершение, целостность." }
 ];
 
 let selectedSpread = null;
@@ -104,6 +104,11 @@ function renderCards() {
     });
 }
 
+// Функция для переворота одной карты
+function flipCard(cardElement, index) {
+    cardElement.classList.toggle('flipped');
+}
+
 // Функция для показа всех карт по очереди
 function revealAllCards() {
     const cards = document.querySelectorAll('.card');
@@ -112,19 +117,6 @@ function revealAllCards() {
         setTimeout(() => {
             card.classList.add('flipped');
         }, index * 200); // Задержка 200мс между картами
-    });
-}
-
-// Функция для переворота одной карты
-function flipCard(cardElement, index) {
-    cardElement.classList.toggle('flipped');
-}
-
-// Функция для показа всех карт
-function revealAllCards() {
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.classList.add('flipped');
     });
 }
 
