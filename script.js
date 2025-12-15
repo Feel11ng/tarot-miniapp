@@ -116,6 +116,20 @@ function revealAllCards() {
     });
 }
 
+// Функция для возврата к выбору раскладов
+function goBackToSpreads() {
+    // Скрываем контейнер с картами и загрузкой
+    document.getElementById('cards-container').classList.add('hidden');
+    document.getElementById('loading').classList.add('hidden');
+    
+    // Показываем селектор раскладов
+    document.getElementById('spread-selector').classList.remove('hidden');
+    
+    // Очищаем текущий расклад
+    selectedSpread = null;
+    selectedCards = [];
+}
+
 // Добавляем анимацию при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     // Анимация для заголовка
