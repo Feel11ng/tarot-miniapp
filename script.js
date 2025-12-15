@@ -92,6 +92,7 @@ function renderCards() {
                 <div class="card-front-side">
                     <img src="${card.image}" alt="${card.name}" onerror="this.src='https://via.placeholder.com/150?text=Карта'">
                     <div class="name">${card.name}</div>
+                    <div class="name-ru">${card.name_ru || ''}</div>
                     <div class="meaning">${card.meaning}</div>
                 </div>
             </div>
